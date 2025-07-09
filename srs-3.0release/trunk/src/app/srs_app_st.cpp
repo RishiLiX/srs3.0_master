@@ -84,7 +84,7 @@ _ST_THREAD_CREATE_PFN _pfn_st_thread_create = (_ST_THREAD_CREATE_PFN)st_thread_c
 SrsSTCoroutine::SrsSTCoroutine(string n, ISrsCoroutineHandler* h, int cid)
 {
     name = n;
-    handler = h;  // 因为TCP UDP 的类都继承ISrsCoroutineHandler
+    handler = h;  // 因为TCP UDP SrsConnection 的类都继承ISrsCoroutineHandler
     context = cid;
     trd = NULL;
     trd_err = srs_success;

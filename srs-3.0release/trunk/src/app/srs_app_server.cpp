@@ -1397,8 +1397,8 @@ srs_error_t SrsServer::accept_client(SrsListenerType type, srs_netfd_t stfd) // 
 {
     srs_error_t err = srs_success;
     
-    SrsConnection* conn = NULL;
-    
+    SrsConnection* conn = NULL;   // 在下面创建时 将 : SrsConnection(svr, c, cip) 传入
+    // 将类型 和 一个 conn 绑定
     if ((err = fd2conn(type, stfd, &conn)) != srs_success) {
         if (srs_error_code(err) == ERROR_SOCKET_GET_PEER_IP && _srs_config->empty_ip_ok()) {
             srs_close_stfd(stfd); srs_error_reset(err);
@@ -1412,8 +1412,8 @@ srs_error_t SrsServer::accept_client(SrsListenerType type, srs_netfd_t stfd) // 
     conns.push_back(conn);
     
     // cycle will start process thread and when finished remove the client.
-    // @remark never use the conn, for it maybe destroyed.
-    if ((err = conn->start()) != srs_success) {
+    // @remark never use the conn, for it maybe destroyed. SrsServer类对象传入SrsConnection
+    if ((err = conn->start()) != srs_success) { // 这个对应调到 SrsConnection::cycle() 通过多态再去调用
         return srs_error_wrap(err, "start conn coroutine");
     }
     

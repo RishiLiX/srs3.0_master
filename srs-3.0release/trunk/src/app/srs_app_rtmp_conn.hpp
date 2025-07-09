@@ -89,7 +89,7 @@ class SrsRtmpConn : virtual public SrsConnection, virtual public ISrsReloadHandl
     friend class SrsPublishRecvThread;
 private:
     SrsServer* server;
-    SrsRtmpServer* rtmp;
+    SrsRtmpServer* rtmp; // 它中的skt是SrsConnection初始化创建传进去的
     SrsRefer* refer;
     SrsBandwidth* bandwidth;
     SrsSecurity* security;

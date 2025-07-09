@@ -234,7 +234,7 @@ private:
     //       for the server never delete the file; when system startup, the pid in pid file
     //       maybe valid but the process is not SRS, the init.d script will never start server.
     int pid_fd;
-    // All connections, connection manager
+    // All connections, connection manager  连接管理
     std::vector<SrsConnection*> conns;
     // All listners, listener manager.
     std::vector<SrsListener*> listeners;

@@ -168,7 +168,7 @@ srs_error_t SrsConnection::set_socket_buffer(srs_utime_t buffer_v)
 
 srs_error_t SrsConnection::cycle()
 {
-    srs_error_t err = do_cycle();
+    srs_error_t err = do_cycle(); // 根据多态进行任务处理
     
     // Notify manager to remove it.
     manager->remove(this);

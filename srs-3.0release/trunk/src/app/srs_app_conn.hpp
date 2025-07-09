@@ -45,14 +45,14 @@ class SrsConnection : virtual public ISrsConnection, virtual public ISrsCoroutin
 protected:
     // Each connection start a green thread,
     // when thread stop, the connection will be delete by server.
-    SrsCoroutine* trd;
+    SrsCoroutine* trd; //协程
     // The manager object to manage the connection.
     IConnectionManager* manager;
     // The underlayer st fd handler.
     srs_netfd_t stfd;
     // The ip of client.
     std::string ip;
-    // The underlayer socket.
+    // The underlayer socket. 在SrsConnection类初始化的时候创建了
     SrsStSocket* skt;
     // The connection total kbps.
     // not only the rtmp or http connection, all type of connection are

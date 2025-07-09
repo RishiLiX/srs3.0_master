@@ -2188,7 +2188,7 @@ srs_error_t SrsRtmpClient::fmle_publish(string stream, int& stream_id)
 
 SrsRtmpServer::SrsRtmpServer(ISrsProtocolReadWriter* skt)
 {
-    io = skt;
+    io = skt; 
     protocol = new SrsProtocol(skt);
     hs_bytes = new SrsHandshakeBytes();
 }
